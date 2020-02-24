@@ -1,0 +1,102 @@
+@mixin flex($direction) {
+    display: flex;
+    @if ($direction) {
+        flex-direction: unquote($direction);
+    }
+    @content;
+}
+
+@mixin flex-row {
+    @include flex("row") {
+        @content;
+    }
+}
+
+@mixin flex-col {
+    @include flex("column") {
+        @content;
+    }
+}
+
+@mixin flex-al-center {
+    align-items: center;
+}
+
+@mixin flex-al-end {
+    align-items: flex-end;
+}
+
+@mixin flex-al-start {
+    align-items: flex-start;
+}
+
+@mixin flex-al-stretch {
+    align-items: stretch;
+}
+
+@mixin flex-al-baseline {
+    align-items: baseline;
+}
+
+@mixin flex-row-center {
+    @include flex("row") {
+        @content;
+    }
+    @include flex-al-center;
+}
+
+@mixin flex-just-center {
+    justify-content: center;
+}
+
+@mixin flex-just-end {
+    justify-content: flex-end;
+}
+
+@mixin flex-just-between {
+    justify-content: space-between;
+}
+
+@mixin flex-full-center {
+    @include flex(false) {
+        @include flex-al-center;
+        @include flex-just-center;
+    }
+}
+
+@mixin flex-push-right {
+    margin-left: auto;
+}
+
+@mixin flex-push-down {
+    margin-top: auto;
+}
+
+@mixin panel-full {
+    background-color: #FFF;
+    padding: 10px;
+}
+
+@mixin transit-bg-color {
+    transition: background-color 100ms linear;
+}
+
+.abstract-before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 0;
+}
+
+@mixin absolute-overload {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+@mixin info-preloading-line {
+    animation: blink_loading 4s linear infinite;
+}

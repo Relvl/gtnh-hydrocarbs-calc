@@ -1,0 +1,29 @@
+@import "../flex";
+@import "../variables";
+@import "../margins";
+
+.c-inline-dropdown {
+    cursor: pointer;
+    position: relative;
+
+    .dropdown-menu {
+        @include flex-col;
+        position: absolute;
+        background: white;
+        z-index: 1;
+        top: 4px;
+        left: 4px;
+
+        & > pre {
+            cursor: pointer;
+
+            &:not(:last-child) {
+                margin-bottom: 2px;
+            }
+
+            &:hover {
+                background: darken($inactive_bg_color, 20%);
+            }
+        }
+    }
+}

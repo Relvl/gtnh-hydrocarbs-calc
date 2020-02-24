@@ -1,0 +1,107 @@
+@import "variables";
+
+@keyframes spinner-new-large {
+    $rMin: 22px;
+    0% {
+        transform: rotate(0deg);
+        stroke-dashoffset: 250px - 2 * $rMin * $pi;
+    }
+    50% {
+        transform: rotate(720deg);
+        stroke-dashoffset: 250px;
+    }
+    100% {
+        transform: rotate(1080deg);
+        stroke-dashoffset: 250px - 2 * $rMin * $pi;
+    }
+}
+
+@keyframes spinner-new-medium {
+    $rMin: 10px;
+    0% {
+        transform: rotate(0deg);
+        stroke-dashoffset: 250px - 2 * $rMin * $pi;
+    }
+    50% {
+        transform: rotate(720deg);
+        stroke-dashoffset: 250px;
+    }
+    100% {
+        transform: rotate(1080deg);
+        stroke-dashoffset: 250px - 2 * $rMin * $pi;
+    }
+}
+
+svg.spinner_new {
+    flex-shrink: 0;
+
+    circle {
+        fill: transparent;
+        stroke-width: 2px;
+        stroke-linecap: round;
+        stroke-dasharray: 250px;
+        animation: 5s linear infinite;
+    }
+
+    &.large {
+        $size: 82px;
+        width: $size;
+        height: $size;
+
+        circle {
+            transform-origin: $size/2-1 $size/2-1;
+            animation-name: spinner-new-large;
+        }
+    }
+
+    &.medium {
+        $size: 42px;
+        width: $size;
+        height: $size;
+
+        circle {
+            transform-origin: $size/2-1 $size/2-1;
+            animation-name: spinner-new-medium;
+        }
+    }
+
+    &.small {
+        $size: 26px;
+        width: $size;
+        height: $size;
+
+        circle {
+            transform-origin: $size/2-1 $size/2-1;
+            animation-name: spinner-new-medium;
+        }
+    }
+}
+
+/*fix: осёл не умеет в анимацию stroke-dasharray, к тому же имеет разные пропорции для этого параметра. Крутим всю SVG... */
+body.ie svg.spinner_new {
+    animation: spin 1s infinite linear;
+
+    &.large {
+        transform-origin: 40px 40px;
+
+        circle {
+            stroke-dasharray: 120px !important;
+        }
+    }
+
+    &.medium {
+        transform-origin: 20px 20px;
+
+        circle {
+            stroke-dasharray: 50px !important;
+        }
+    }
+
+    &.small {
+        transform-origin: 12px 12px;
+
+        circle {
+            stroke-dasharray: 40px !important;
+        }
+    }
+}

@@ -1,0 +1,92 @@
+@import "../variables";
+@import "../flex";
+
+.c-checkbox {
+    @include flex-row;
+    position: relative;
+
+    $box_width: 20px;
+    $box_height: 20px;
+
+    input {
+        position: absolute;
+        cursor: pointer;
+        opacity: 0;
+        left: 0;
+        top: 0;
+        width: $box_width;
+        height: $box_height;
+    }
+
+    label {
+        cursor: pointer;
+        width: 100%;
+        line-height: 1.4;
+
+        header {
+            margin: 0;
+        }
+    }
+
+    .facade {
+        @include flex-row;
+        @include flex-full-center;
+        position: relative;
+        width: $box_width;
+        height: $box_height;
+        padding: 0;
+        border: 2px solid #cdcdcd;
+        background-color: white;
+        flex-shrink: 0;
+        margin: 0; /* 12px потому что нижележащий блок можно выровнять по лейблу при margin-left-l */
+        &.right-margin {
+            margin-right: 12px;
+        }
+
+        &.checked {
+            //background-color: $control_color_orange;
+            //border-color: $control_color_orange;
+        }
+
+        svg.ui-ico-check {
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            //fill: white;
+            fill: $control_color_purple;
+            margin-left: 1px;
+            left: -25%; /*fix: ie+fox фикс. хром ок.*/
+            top: -25%; /*fix: ie+fox фикс. хром ок.*/
+        }
+
+        .animation-element {
+            display: block;
+            position: absolute;
+            background: lighten($control_color_purple, 30%);
+            border-radius: 100%;
+            transform: scale(0);
+            width: 25px;
+            height: 25px;
+            left: -25%; /*fix: ie+fox фикс. хром ок.*/
+            top: -25%; /*fix: ie+fox фикс. хром ок.*/
+
+            &.animate-ripple {
+                animation: ripple 0.3s linear;
+            }
+        }
+    }
+
+    &.disabled {
+        cursor: default;
+
+        label {
+            color: $inactive_text_color;
+            cursor: default;
+        }
+
+        .facade {
+            background-color: $inactive_bg_color;
+            cursor: default;
+        }
+    }
+}

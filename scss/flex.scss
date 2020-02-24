@@ -1,0 +1,224 @@
+@import "mixins";
+
+.flex-row {
+    @include flex-row;
+}
+
+.flex-col {
+    @include flex-col;
+}
+
+.flex-push-right {
+    @include flex-push-right;
+}
+
+.flex-push-down {
+    margin-top: auto !important;
+}
+
+.flex-al-center {
+    @include flex-al-center;
+}
+
+.flex-al-end {
+    @include flex-al-end;
+}
+
+.flex-al-baseline {
+    @include flex-al-baseline;
+}
+
+.flex-al-start {
+    @include flex-al-start;
+}
+
+.flex-al-stretch {
+    @include flex-al-stretch;
+}
+
+.flex-row-center {
+    @include flex-row-center;
+}
+
+.flex-row-end {
+    @include flex-row;
+    align-items: flex-end;
+}
+
+.flex-row-start {
+    @include flex-row;
+    align-items: flex-start;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.grid-row { /* old */
+    @include flex-row;
+    flex-wrap: wrap;
+}
+
+.flex-full-center {
+    @include flex-full-center;
+}
+
+.flex-just-between {
+    @include flex-just-between;
+}
+
+.flex-just-center {
+    @include flex-just-center;
+}
+
+.flex-just-end {
+    @include flex-just-end;
+}
+
+.flex-max-grow {
+    flex-grow: 12;
+}
+
+.autowrap-container {
+    @include flex-row;
+    flex-wrap: wrap;
+}
+
+.flex-no-shrink {
+    flex-shrink: 0;
+}
+
+.flex-grow-1 {
+    flex-grow: 1;
+}
+
+.flex-basis150 {
+    flex-basis: 150px;
+}
+
+/* region grid */
+
+$grid_margin: 10px;
+
+/* ------------------------------------------------
+
+*/
+@for $i from 1 through 12 {
+    *:not(table) .grid-col-#{$i} {
+        width: calc((100% + #{$grid_margin}) / 12 * #{$i} - #{$grid_margin});
+
+        &:not(:last-child) {
+            margin-right: $grid_margin;
+        }
+    }
+    table .grid-col-#{$i} {
+        //width: calc(100% / 12 * #{$i}); //FF и ИЕ не умеют в калькуляцию ширины столба таблицы
+        width: 100% / 12 * $i;
+    }
+}
+
+/* ------------------------------------------------
+    Вложенные сетки. Начальная сетка имеет 12 делений, но если внутри сетки требуется разделить таким образом, чтобы ширина оказалась равной ширине внешней сетки - применяются эти стили.
+    Например, есть ячейка grid-col-8, а внутри неё, для соосности, требуется сделать ячейку, равной по ширине grid-col-2 - то следует воспользоваться классом grid-col-2-of-8.
+ */
+@for $outer from 2 through 11 {
+    @for $inner from 1 through $outer {
+        *:not(table) .grid-col-#{$inner}-of-#{$outer} {
+            width: calc((100% + #{$grid_margin * -2}) / #{$outer} * #{$inner}); /*не совсем догоняю, почему маржин надо на -2 умножать...*/
+            &:not(:last-child) {
+                margin-right: $grid_margin;
+            }
+        }
+        table .grid-col-#{$inner}-of-#{$outer} {
+            //width: calc(100% / #{$outer} * #{$inner}); //FF и ИЕ не умеют в калькуляцию ширины столба таблицы
+            width: 100% / $outer * $inner;
+        }
+    }
+}
+
+.grid-col-12, .grid-col-2-of-3, .grid-col-3-of-3, .grid-col-4-of-4, .grid-col-5-of-5,
+.grid-col-6-of-6, .grid-col-7-of-7, .grid-col-8-of-8, .grid-col-9-of-9, .grid-col-10-of-10, .grid-col-11-of-11 {
+    width: 100%;
+}
+
+/* Пустые класс нужны чтобы работала автоподстановка... */
+.grid-col-1, .grid-col-2, .grid-col-3, .grid-col-4, .grid-col-5, .grid-col-6, .grid-col-7, .grid-col-8, .grid-col-9, .grid-col-10, .grid-col-11,
+.grid-col-1-of-2,
+.grid-col-1-of-3, .grid-col-2-of-3,
+.grid-col-1-of-4, .grid-col-2-of-4, .grid-col-3-of-4,
+.grid-col-1-of-5, .grid-col-2-of-5, .grid-col-3-of-5, .grid-col-4-of-5,
+.grid-col-1-of-6, .grid-col-2-of-6, .grid-col-3-of-6, .grid-col-4-of-6, .grid-col-5-of-6,
+.grid-col-1-of-7, .grid-col-2-of-7, .grid-col-3-of-7, .grid-col-4-of-7, .grid-col-5-of-7, .grid-col-6-of-7,
+.grid-col-1-of-8, .grid-col-2-of-8, .grid-col-3-of-8, .grid-col-4-of-8, .grid-col-5-of-8, .grid-col-6-of-8, .grid-col-7-of-8,
+.grid-col-1-of-9, .grid-col-2-of-9, .grid-col-3-of-9, .grid-col-4-of-9, .grid-col-5-of-9, .grid-col-6-of-9, .grid-col-7-of-9, .grid-col-8-of-9,
+.grid-col-1-of-10, .grid-col-2-of-10, .grid-col-3-of-10, .grid-col-4-of-10, .grid-col-5-of-10, .grid-col-6-of-10, .grid-col-7-of-10, .grid-col-8-of-10, .grid-col-9-of-10,
+.grid-col-1-of-11, .grid-col-2-of-11, .grid-col-3-of-11, .grid-col-4-of-11, .grid-col-5-of-11, .grid-col-6-of-11, .grid-col-7-of-11, .grid-col-8-of-11, .grid-col-9-of-11, .grid-col-10-of-11 {
+}
+
+/* todo! сделать циклом*/
+.grid-row-1 {
+    width: calc((100% + #{$grid_margin}) / 12 * 1 - #{$grid_margin} - 1px);
+    margin-top: $grid_margin;
+
+    &:not(:nth-child(12n)) {
+        margin-right: $grid_margin;
+    }
+
+    &:nth-child(-n+12) {
+        margin-top: 0;
+    }
+}
+
+.grid-row-2 {
+    width: calc((100% + #{$grid_margin}) / 12 * 2 - #{$grid_margin} - 1px);
+    margin-top: $grid_margin;
+
+    &:not(:nth-child(6n)) {
+        margin-right: $grid_margin;
+    }
+
+    &:nth-child(-n+6) {
+        margin-top: 0;
+    }
+}
+
+.grid-row-3 {
+    width: calc((100% + #{$grid_margin}) / 12 * 3 - #{$grid_margin} - 1px);
+    margin-top: $grid_margin;
+
+    &:not(:nth-child(4n)) {
+        margin-right: $grid_margin;
+    }
+
+    &:nth-child(-n+4) {
+        margin-top: 0;
+    }
+}
+
+.grid-row-4 {
+    width: calc((100% + #{$grid_margin}) / 12 * 4 - #{$grid_margin} - 1px);
+    margin-top: $grid_margin;
+
+    &:not(:nth-child(3n)) {
+        margin-right: $grid_margin;
+    }
+
+    &:nth-child(-n+3) {
+        margin-top: 0;
+    }
+}
+
+.grid-row-6 {
+    width: calc((100% + #{$grid_margin}) / 12 * 6 - #{$grid_margin} - 1px);
+    margin-top: $grid_margin;
+
+    &:not(:nth-child(2n)) {
+        margin-right: $grid_margin;
+    }
+
+    &:nth-child(-n+2) {
+        margin-top: 0;
+    }
+}
+
+/* endregion grid */

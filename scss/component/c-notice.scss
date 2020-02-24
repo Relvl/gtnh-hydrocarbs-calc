@@ -1,0 +1,47 @@
+@import "../variables";
+@import "../flex";
+
+.c-notice {
+    $NORMAL_INDEX: 0;
+    $SUCCESS_INDEX: 1;
+    $WARNING_INDEX: 2;
+    $ERROR_INDEX: 3;
+
+    @include flex-col;
+    @include flex-al-center;
+
+    position: relative;
+    padding: $size_m;
+    border-radius: $border_radius;
+
+    & > * {
+        width: 100%;
+    }
+
+    &.c-notice-style-#{$NORMAL_INDEX} {
+        box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12);
+        background-color: #ebe1f6;
+
+        header {
+            .control-container {
+                .icon-container {
+                    fill: $control_color_purple;
+                }
+            }
+        }
+    }
+
+    &.c-notice-style-#{$SUCCESS_INDEX} {
+        background-color: #dcf3dd;
+        box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12);
+    }
+
+    &.c-notice-style-#{$WARNING_INDEX} {
+        box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12);
+        background-color: #ebe1f6;
+    }
+
+    &.c-notice-style-#{$ERROR_INDEX} {
+        background-color: #f9e0de;
+    }
+}

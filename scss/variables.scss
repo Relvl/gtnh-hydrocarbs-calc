@@ -1,0 +1,43 @@
+$pi: 3.14159265359;
+$application_with: 1190px;
+$top_menu_height: 100px;
+
+$application_height_calc: calc(100vh - #{$top_menu_height});
+
+$size_xs: 4px;
+$size_s: 10px;
+$size_m: 16px;
+$size_l: 32px;
+$size_xl: 64px;
+$size_xxl: 320px;
+
+$main_color: #292929;
+$inactive_bg_color: #f5f5f5;
+$inactive_text_color: grey;
+
+$control_height: 48px;
+$control_color_grey: #595959;
+$control_color_purple: #70f;
+$control_color_orange: #ff4f12;
+$control_color_green: #57d9b7;
+
+$color_eissd_blue: #1b3a65;
+$color_eissd_link: #009fe8;
+$color_eissd_link_header: #7dbee6;
+$color_eissd_icon_header: #007dbf;
+
+$transition_custom_1: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+$transition_default: 0.2s ease-in-out;
+
+$border_radius: 4px;
+$block_border_color: #d9d9d9;
+$block_border: 1px solid $block_border_color;
+@mixin bordered-block {
+    border: $block_border;
+    border-radius: $border_radius;
+    padding: $size_s;
+}
+
+.bordered-block {
+    @include bordered-block;
+}

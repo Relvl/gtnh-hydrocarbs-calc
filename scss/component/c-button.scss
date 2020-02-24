@@ -1,0 +1,123 @@
+@import "../flex";
+@import "../variables";
+@import "../margins";
+
+.c-button {
+    $NORMAL_INDEX: 0;
+    $CANCEL_INDEX: 1;
+    $RED_INDEX: 2;
+
+    @include flex-row;
+    @include flex-full-center;
+
+    outline: none;
+    outline: 0;
+    min-height: 36px;
+    height: 36px;
+    min-width: 100px;
+    cursor: pointer;
+    border: 0;
+    border-radius: $border_radius;
+    box-sizing: border-box;
+    text-transform: none;
+    vertical-align: middle;
+    text-decoration: none;
+    overflow: hidden;
+    position: relative;
+    padding: 0 16px;
+    user-select: none;
+
+    & > * {
+        pointer-events: none;
+    }
+
+    &:hover:not(.disabled):not([disabled]) {
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    &[disabled]:not(.waiting),
+    &.disabled:not(.waiting) {
+        cursor: default;
+        opacity: 0.5;
+        pointer-events: none;
+    }
+
+    &.waiting {
+        cursor: wait;
+    }
+
+    .content {
+        position: relative;
+
+        .controls-container {
+            position: absolute;
+            left: -38px;
+            top: -5px;
+        }
+    }
+
+    .anim-ripple {
+        display: block;
+        position: absolute;
+        background: #abbcde; /* По просьбе Иры, оставляем так. */
+        border-radius: 100%;
+        transform: scale(0);
+        width: 100px;
+        height: 100px;
+
+        &.animate {
+            animation: ripple 0.3s linear;
+            opacity: 0.5;
+        }
+    }
+
+    &.c-button-style-#{$NORMAL_INDEX} {
+        background-color: $color_eissd_blue;
+        color: white;
+
+        &.waiting {
+            background-color: lighten($color_eissd_blue, 40%);
+            cursor: wait;
+            color: white;
+        }
+    }
+
+    &.c-button-style-#{$CANCEL_INDEX} {
+        background-color: white;
+        border: 2px solid $control_color_grey;
+        color: $control_color_grey;
+
+        &.waiting {
+            border-color: lighten($control_color_grey, 40%);
+            background-color: lighten($control_color_grey, 48%);
+            color: #a0948f;
+        }
+
+        .anim-ripple {
+            background: lighten($control_color_grey, 30%);
+        }
+    }
+
+    &.c-button-style-#{$RED_INDEX} {
+        background-color: $control_color_orange;
+        border: none;
+        color: white;
+
+        &.waiting {
+            border-color: lighten($control_color_orange, 40%);
+            background-color: lighten($control_color_orange, 40%);
+            color: #a0948f;
+        }
+
+        .anim-ripple {
+            background: lighten($control_color_orange, 30%);
+        }
+    }
+}
+
+@keyframes ripple {
+    100% {
+        opacity: 0;
+        transform: scale(2);
+    }
+}

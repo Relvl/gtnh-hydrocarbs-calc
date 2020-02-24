@@ -1,0 +1,99 @@
+@import "../variables";
+@import "../flex";
+
+.c-header {
+    @include flex-row-center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 40px;
+    height: 40px;
+    background: $color_eissd_blue;
+    box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+
+    .logo {
+        @include flex-row-center;
+        font-size: 20px;
+        color: #8d9db2;
+        line-height: 40px;
+        font-weight: bold;
+
+        &:before {
+            content: "";
+            width: 17px;
+            height: 25px;
+            margin: -4px 11.5px 0;
+            background: url(/image/ui-icons.png) -1px -194px no-repeat;
+        }
+    }
+
+    .page-title {
+        margin-left: 32px;
+        line-height: 40px;
+        color: #a1b1c6;
+        font-weight: normal;
+        font-size: 20px;
+        font-family: roboto-light, Arial, sans-serif;
+    }
+
+    a.header-button-link {
+        display: block;
+        margin-right: 32px;
+
+        svg {
+            fill: #007dbf;
+        }
+
+        &:hover {
+            svg {
+                fill: #7dbee6;
+            }
+        }
+    }
+
+    .user {
+        @include flex-row-center;
+        color: #7dbee6;
+        font-size: 12px;
+        line-height: 40px;
+        cursor: pointer;
+
+        &:before {
+            content: "";
+            width: 16px;
+            height: 15px;
+            margin: 0 8px 0 0;
+            background: url(/image/ui-icons.png) 0 -161px no-repeat;
+        }
+
+        &:hover {
+            color: white;
+        }
+    }
+
+    .logout {
+        width: 40px;
+        height: 40px;
+        opacity: 0.4;
+        cursor: pointer;
+        margin-left: $size_l;
+        background: #162e51 url(/image/ico-logout.png) no-repeat 50% 50%;
+
+        &:hover {
+            background-color: #324e75;
+            opacity: 1;
+        }
+
+        &.loading {
+            opacity: 1;
+            background: $color_eissd_blue;
+            cursor: wait;
+        }
+
+        svg {
+            transform: scale(0.8);
+        }
+    }
+}

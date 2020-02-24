@@ -1,0 +1,225 @@
+@import "../variables";
+@import "../flex";
+
+.c-combobox {
+    @include flex-row;
+    position: relative;
+    height: $control_height;
+    color: $main_color;
+
+    & > label {
+        position: absolute;
+        left: 0;
+        top: 16px;
+        padding-left: 4px;
+        color: #2f302f;
+        opacity: 0.5;
+        font-size: 20px;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        white-space: nowrap;
+        max-width: 100%;
+        overflow: hidden;
+        z-index: 2;
+        width: 100%;
+        height: 26px;
+        padding-right: 36px;
+        cursor: pointer;
+
+        .required_sign {
+            color: $control_color_orange;
+            font-weight: bold;
+            margin-left: $size_xs;
+        }
+    }
+
+    & > input {
+        outline: none;
+        height: 32px;
+        margin-top: 12px;
+        border: none;
+        width: 100%;
+        font: 16px BasisGrotesquePro-Regular, Arial, sans-serif;
+        letter-spacing: 0.3px;
+        background-color: transparent;
+        z-index: 1;
+    }
+
+    .open-dd-button {
+        position: absolute;
+        width: 29px;
+        height: 29px;
+        right: 0;
+        padding: 8px;
+        transition: transform $transition_default;
+        transform: rotate(90deg);
+        top: 12px;
+        fill: $control_color_grey;
+        cursor: pointer;
+        z-index: 4;
+
+        &:hover {
+            fill: black;
+        }
+
+        &.simple {
+            position: relative;
+            right: unset;
+        }
+    }
+
+    &:before,
+    &:after {
+        content: " ";
+        position: absolute;
+        bottom: 6px;
+        right: 0;
+        left: 0;
+        z-index: 1;
+        transition: all 0.3s ease-in-out;
+    }
+
+    &:before {
+        height: 2px;
+        z-index: 2;
+        opacity: 0;
+        transform: scaleX(0.12);
+        background-color: $control_color_purple;
+    }
+
+    &:after {
+        height: 1px;
+        background-color: rgba(0, 0, 0, 0.42);
+    }
+
+    .selected-value-container {
+        @include flex-row-center;
+        outline: none;
+        height: 32px;
+        margin-top: 12px;
+        border: none;
+        width: 100%;
+        font: 16px BasisGrotesquePro-Regular, Arial, sans-serif;
+        letter-spacing: 0.3px;
+        background-color: transparent;
+        z-index: 1;
+        cursor: pointer;
+        white-space: nowrap;
+        overflow-x: hidden;
+        margin-right: 29px;
+
+        svg,
+        img {
+            max-height: 22px;
+            max-width: 22px;
+        }
+    }
+
+    .combobox-drop-down {
+        position: absolute;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        top: 42px;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        transition: max-height $transition_custom_1;
+        max-height: 0;
+        z-index: 200;
+        box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+        opacity: 0;
+
+        $control_color_pink: #cb7aff;
+
+        .overflow-wrapper {
+            @include flex-col;
+
+            .dd-item {
+                cursor: pointer;
+
+                &.selected {
+                    background-color: lighten($control_color_pink, 20%);
+                }
+
+                &.subselected {
+                    background-color: lighten($control_color_pink, 22%);
+                }
+
+                &:hover {
+                    background-color: $control_color_pink;
+                    color: white;
+                }
+            }
+
+            & > * {
+                padding: 8px;
+            }
+        }
+    }
+
+    &.expanded {
+        label {
+            opacity: 1;
+        }
+
+        &:before {
+            opacity: 1;
+            transform: scaleX(1);
+        }
+
+        .open-dd-button {
+            transform: rotate(-90deg);
+        }
+
+        .combobox-drop-down {
+            animation: 0.35s delay-overflow-y;
+            max-height: 300px;
+            opacity: 1;
+        }
+
+        .combobox-drop-down-auto-width {
+            width: auto;
+        }
+
+        &.simple {
+            &:before,
+            &:after {
+                content: unset;
+            }
+
+            svg {
+                right: unset;
+                margin-left: unset;
+                position: relative;
+            }
+
+            input {
+                display: none;
+            }
+        }
+    }
+
+    &.expanded,
+    &.has-value {
+        label {
+            top: 0;
+            font-size: 14px;
+            padding-left: 0;
+            height: 16px;
+        }
+    }
+
+    &.disabled {
+        color: $control_color_grey;
+
+        .open-dd-button {
+            fill: $control_color_grey;
+        }
+
+        .selected-value-container,
+        & > label,
+        .buttons-container > *,
+        .open-dd-button {
+            cursor: default;
+        }
+    }
+}

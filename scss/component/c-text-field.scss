@@ -1,0 +1,170 @@
+@import "../flex";
+@import "../variables";
+@import "../margins";
+
+.c-text-field,
+.c-text-box {
+    @include flex-row;
+    position: relative;
+
+    label {
+        position: absolute;
+        left: 0;
+        top: 16px;
+        padding-left: 4px;
+        color: #2f302f;
+        opacity: 0.5;
+        font-size: 20px;
+        font-weight: normal;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        white-space: nowrap;
+        cursor: text;
+        max-width: 100%;
+        overflow: hidden;
+        user-select: none;
+    }
+
+    input,
+    textarea {
+        padding-left: 0;
+        padding-bottom: 8px;
+        outline: none;
+        height: 32px;
+        margin-top: 12px;
+        border: none;
+        width: 100%;
+        font-size: 16px;
+        letter-spacing: 0.3px;
+        background-color: transparent;
+
+        &:disabled {
+            color: $inactive_text_color;
+        }
+
+        /*особая магия для отлова события autofill'а в хроме. @see CTextField::autoFillCompleted*/
+        &:-webkit-autofill {
+            transition: background-color 0.1s ease-in-out 0s;
+        }
+
+        /*скрываем нативный ИЕ крест*/
+        &::-ms-clear {
+            display: none;
+            width: 0;
+            height: 0;
+        }
+    }
+
+    textarea {
+        min-width: 100%;
+        resize: vertical;
+        overflow-y: auto;
+        min-height: 100px;
+        margin-top: 20px;
+        height: inherit;
+    }
+
+    &.disabled {
+        opacity: 0.4;
+    }
+
+    &.is-focused,
+    &.has-value {
+        label {
+            top: 0;
+            font-size: 14px;
+            padding-left: 0;
+        }
+
+        .additional-link {
+            margin-top: -20px;
+        }
+    }
+
+    &.is-focused {
+        &:not(.has-value) {
+            .ie-placeholder {
+                display: flex;
+            }
+        }
+    }
+
+    &.is-focused label {
+        opacity: 1;
+    }
+
+    &:before,
+    &:after {
+        content: " ";
+        position: absolute;
+        bottom: 6px;
+        right: 0;
+        left: 0;
+        z-index: 1;
+        transition: all 0.3s ease-in-out;
+    }
+
+    &:before {
+        height: 2px;
+        z-index: 2;
+        opacity: 0;
+        transform: scaleX(0.12);
+        background-color: $control_color_purple;
+    }
+
+    &:after {
+        height: 1px;
+        background-color: rgba(0, 0, 0, 0.42);
+    }
+
+    .validation-tip-container {
+        position: absolute;
+        right: 0;
+        left: 0;
+        top: calc(100% - 2px);
+        text-align: right;
+        font-size: 12px;
+        background: white;
+        box-shadow: 0 2px 5px 0 white;
+        z-index: 10;
+    }
+
+    &.is-focused,
+    &.expanded,
+    &.is-invalid,
+    &.is-valid {
+        &:before {
+            opacity: 1;
+            transform: scaleX(1);
+        }
+    }
+
+    &.c-text-box:before,
+    &.c-text-box:after {
+        bottom: 0;
+    }
+
+    &.is-valid {
+        &:before {
+            background-color: $control_color_green;
+        }
+    }
+
+    &.is-invalid {
+        .validation-tip-container {
+            opacity: 1;
+            color: red;
+        }
+
+        &:before {
+            background-color: red;
+        }
+
+        & > label {
+            color: red;
+        }
+    }
+}
+
+.c-text-area .validation-tip-container {
+    top: calc(100% + 4px);
+}

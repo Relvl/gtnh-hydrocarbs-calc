@@ -1,0 +1,122 @@
+@import "variables";
+@import "flex";
+
+section:not(:empty) {
+    @extend %section-common;
+
+    &.banner-padding {
+        padding: 25px;
+        max-height: 450px;
+    }
+}
+
+/* базовые стили для белых секций, для extend'а другими классами.
+Вынесено в отдельный файл от section.scss в рамках борьбы с порядком импортов и как следствие порядка классов в финальном бандле:
+т.к. если оставить этот класс в section.scss, то везде где идет импорт - будет также импортиться и section:not(:empty) селектор
+*/
+%section-common {
+    background-color: white;
+    padding: $size_l;
+    border-radius: $border_radius;
+
+    &:not(:last-of-type) {
+        margin-bottom: $size_m;
+    }
+
+    header {
+        @include flex-row-center;
+        font-size: 18px;
+        margin: 0 0 $size_s;
+        font-weight: bold;
+
+        svg {
+            margin-right: $size_xs;
+        }
+    }
+
+    header.flex-al-start {
+        /* old */
+        @include flex-al-start;
+
+        & > :nth-child(2) {
+            margin-top: 6px;
+        }
+    }
+
+    header.small-header {
+        @include flex-row-center;
+        font-size: 18px;
+        font-weight: normal;
+        font-family: Roboto, Arial, sans-serif;
+        margin: 0;
+    }
+
+    & > header,
+    & > h1,
+    & > h2,
+    & > h3,
+    .page-header {
+        position: relative;
+        font-size: 26px;
+        margin: 0 0 ($size_l - 4px);
+
+        a {
+            font-size: 14px;
+            font-weight: normal;
+
+            &.big {
+                font-size: 26px;
+                margin: 0;
+            }
+        }
+
+        .right-absolute {
+            position: absolute;
+            right: $size_l;
+        }
+    }
+
+    &.page-group {
+        margin-bottom: $size_m;
+    }
+
+    &.section-collapsable {
+        max-height: $size_l * 2 + 18px;
+        overflow: hidden;
+
+        & > header:first-child {
+            margin: -32px;
+            padding: 32px 32px 24px;
+            margin-bottom: 10px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: $inactive_bg_color;
+            }
+        }
+
+        & > header .expand-arrow {
+            width: 24px;
+            height: 24px;
+            right: 32px;
+            transition: transform $transition_default;
+            transform: rotate(-90deg);
+            fill: $control_color_grey;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        &.expanded {
+            max-height: none;
+            overflow: visible;
+
+            & > header .expand-arrow {
+                transform: rotate(90deg);
+            }
+        }
+    }
+
+    &.small-side-paddings {
+        padding: $size_l $size_m $size_m;
+    }
+}

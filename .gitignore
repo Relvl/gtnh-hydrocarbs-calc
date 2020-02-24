@@ -1,0 +1,16 @@
+/.idea/**
+/.ideaDataSources/**
+/.gradle/**
+/target/**
+/out/**
+/build/**
+/node_modules/**
+/unversioned/**
+
+*.iml
+*.ipr
+*.iws
+package-lock.json
+app.js
+app.css
+npm-debug.log
