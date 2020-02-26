@@ -8,6 +8,7 @@
     "b": "webpack"
   },
   "devDependencies": {
+    "@types/deep-equal": "^1.0.1",
     "@types/node": "^12.6.8",
     "@types/promise": "^7.1.30",
     "@types/react": "latest",
@@ -20,6 +21,7 @@
     "clean-webpack-plugin": "^2.0.2",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "latest",
+    "deep-equal": "^2.0.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "glob": "^7.1.4",
     "html-webpack-plugin": "latest",

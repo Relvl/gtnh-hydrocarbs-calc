@@ -30,7 +30,7 @@ declare global {
         intersection<T>(second: Array<T>): Array<T>;
 
         /** Возвращает элементы, которые есть в обоих массивах. */
-        intersectionEx<T>(second: Array<T>, predicate: (element: T) => boolean): Array<T>;
+        intersectionEx<T>(second: Array<T>, predicate: (element: T) => any): Array<T>;
 
         /** Содержится ли указанный элемент в массиве? */
         contains(element: T): boolean;
@@ -92,7 +92,7 @@ Array.prototype.difference = function <T>(second: Array<T>): Array<T> {
 Array.prototype.intersection = function <T>(second: Array<T>): Array<T> {
     return Array.intersection(this, second);
 };
-Array.prototype.intersectionEx = function <T>(second: Array<T>, predicate: (element: T) => boolean): Array<T> {
+Array.prototype.intersectionEx = function <T>(second: Array<T>, predicate: (element: T) => any): Array<T> {
     return this.filter(t => second.containsEx(e => predicate(e) == predicate(t)));
 };
 Array.prototype.contains = function(element) {
