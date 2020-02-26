@@ -2,7 +2,6 @@ import * as ReactDOM from "react-dom";
 import * as React from "react";
 import {Application} from "./Application";
 import {HashRouter} from "react-router-dom";
-import {testRun} from "./Functions";
 
 // region Костыли для Хрома. Ребята запретили дропать wheel эвенты... Разрешаем.
 const EVENTS_TO_MODIFY = ["touchstart", "touchmove", "touchend", "touchcancel", "wheel"];
@@ -53,5 +52,3 @@ ReactDOM.render(
     </HashRouter>,
     document.getElementById("root"),
 );
-
-testRun();

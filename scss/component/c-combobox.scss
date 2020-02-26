@@ -171,7 +171,8 @@
         }
 
         .combobox-drop-down {
-            animation: 0.35s delay-overflow-y;
+            //animation: 0.35s delay-overflow-y normal;
+            overflow-y: auto;
             max-height: 300px;
             opacity: 1;
         }

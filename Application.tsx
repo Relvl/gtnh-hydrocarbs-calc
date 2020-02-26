@@ -1,6 +1,7 @@
 import * as React from "react";
 import IComponentState from "./core/IComponentState";
 import AComponent from "./core/AComponent";
+import {Calculator} from "./gtnh/Calculator";
 
 type State = {} & IComponentState;
 
@@ -40,7 +41,9 @@ export class Application extends AComponent<{}, State> {
     };
 
     render() {
-        return <div>test ok</div>;
+        return <div className="page-wrapper">
+            <Calculator/>
+        </div>;
     }
 }
 
@@ -59,7 +62,7 @@ export function mergeArrays<T>(...arrays: Array<ReadonlyArray<T>>): Array<T> {
 
 export function uniqueArray<T = any>(array: ReadonlyArray<T>, uniq: (element: T) => string): Array<T> {
     return Object.values(
-        array.reduce((memo: {[key: string]: T}, element: T) => {
+        array.reduce((memo: { [key: string]: T }, element: T) => {
             if (!memo[uniq(element)]) {
                 memo[uniq(element)] = element;
             }
@@ -68,8 +71,8 @@ export function uniqueArray<T = any>(array: ReadonlyArray<T>, uniq: (element: T)
     );
 }
 
-export function groupArray<T>(array: ReadonlyArray<T>, keyMaker: (element: T) => string): {[key: string]: Array<T>} {
-    const result: {[key: string]: Array<T>} = {};
+export function groupArray<T>(array: ReadonlyArray<T>, keyMaker: (element: T) => string): { [key: string]: Array<T> } {
+    const result: { [key: string]: Array<T> } = {};
     array.forEach(element => {
         const key = keyMaker(element);
         let grouped = result[key];
@@ -82,11 +85,11 @@ export function groupArray<T>(array: ReadonlyArray<T>, keyMaker: (element: T) =>
     return result;
 }
 
-export function mapObjectToArray<T, N>(object: {[key: string]: T}, map: (element: T, key: string) => N): Array<N> {
+export function mapObjectToArray<T, N>(object: { [key: string]: T }, map: (element: T, key: string) => N): Array<N> {
     return Object.keys(object).map(key => map(object[key], key));
 }
 
-export function mapObjectToObject<T, N>(object: {[key: string]: T}, map: (element: T, key: string) => N): {[key: string]: N} {
+export function mapObjectToObject<T, N>(object: { [key: string]: T }, map: (element: T, key: string) => N): { [key: string]: N } {
     return Object.keys(object).reduce((memo, key) => ({...memo, [key]: map(object[key], key)}), {});
 }
 
