@@ -48,5 +48,16 @@
   "dependencies": {},
   "keywords": [],
   "author": "",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Relvl/gtnh-hydrocarbs-calc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Relvl/gtnh-hydrocarbs-calc/issues"
+  },
+  "homepage": "https://github.com/Relvl/gtnh-hydrocarbs-calc#readme",
   "description": ""
 }
