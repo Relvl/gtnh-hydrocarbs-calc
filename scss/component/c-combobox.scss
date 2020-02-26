@@ -211,6 +211,7 @@
 
     &.disabled {
         color: $control_color_grey;
+        opacity: 0.7;
 
         .open-dd-button {
             fill: $control_color_grey;

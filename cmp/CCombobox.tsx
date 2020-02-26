@@ -85,6 +85,7 @@ export class CCombobox<ID = string, ATT = any> extends AComponent<Props<ID, ATT>
     }
 
     handleExpand = () => {
+        if (this.props.disabled) { return; }
         if (this.state.expanded) {
             return;
         }
@@ -137,7 +138,7 @@ export class CCombobox<ID = string, ATT = any> extends AComponent<Props<ID, ATT>
 
         return (
             <div
-                className={window.className(className, "c-combobox", {expanded: this.state.expanded, "has-value": !!selectedValue})}
+                className={window.className(className, "c-combobox", {expanded: this.state.expanded, "has-value": !!selectedValue, disabled})}
                 {...comboboxProps}
                 ref={ref => (this.rootRef = ref)}
                 data-selection-prevent=""
@@ -148,7 +149,7 @@ export class CCombobox<ID = string, ATT = any> extends AComponent<Props<ID, ATT>
 
                 {this.renderSelectedValue(selectedValue)}
 
-                <CIcon icon="icon-play3" size="large" className="open-dd-button" onClick={this.handleDropDownButton} />
+                <CIcon icon="icon-play3" size="large" className="open-dd-button" onClick={this.handleDropDownButton}/>
 
                 <div className={"combobox-drop-down"}>
                     <div className="overflow-wrapper">

@@ -1,4 +1,4 @@
-import {Processes} from "./Processes";
+import {Machine} from "./Machine";
 import {Material} from "./Material";
 import {MaterialVolume} from "./MaterialVolume";
 
@@ -6,9 +6,9 @@ export class Recipe {
     readonly sources: Array<MaterialVolume>;
     readonly targets: Array<MaterialVolume>;
     readonly power: number;
-    readonly process: Processes;
+    readonly process: Machine;
 
-    constructor(s: Array<MaterialVolume>, t: Array<MaterialVolume>, power: number, process: Processes) {
+    constructor(s: Array<MaterialVolume>, t: Array<MaterialVolume>, power: number, process: Machine) {
         this.sources = s;
         this.targets = t;
         this.power = power;
@@ -35,5 +35,8 @@ export class Recipe {
 
     toStringSimple() {
         return `${this.sources.filter(s => s.material.tier > 0).map(s => s.material.name)} -> ${this.targets.filter(s => s.material.tier > 0).map(s => s.material.name)}`;
+    }
+    toStringSimpleReversed() {
+        return `${this.targets.filter(s => s.material.tier > 0).map(s => s.material.name)} <- ${this.sources.filter(s => s.material.tier > 0).map(s => s.material.name)}`;
     }
 }
