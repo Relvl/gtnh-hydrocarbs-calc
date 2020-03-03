@@ -24,8 +24,8 @@ export class Recipe {
     }
 
     getRatio(source: Material, target: Material): number {
-        const sourceVol = this.sources.find(r => r.material == source).volume;
-        const targetVol = this.targets.find(r => r.material == target).volume;
+        const sourceVol = this.sources.find(r => r.material == source).volume * (source.solid ? 1000 : 1);
+        const targetVol = this.targets.find(r => r.material == target).volume * (target.solid ? 1000 : 1);
         return targetVol / sourceVol;
     }
 
@@ -36,6 +36,7 @@ export class Recipe {
     toStringSimple() {
         return `${this.sources.filter(s => s.material.tier > 0).map(s => s.material.name)} -> ${this.targets.filter(s => s.material.tier > 0).map(s => s.material.name)}`;
     }
+
     toStringSimpleReversed() {
         return `${this.targets.filter(s => s.material.tier > 0).map(s => s.material.name)} <- ${this.sources.filter(s => s.material.tier > 0).map(s => s.material.name)}`;
     }

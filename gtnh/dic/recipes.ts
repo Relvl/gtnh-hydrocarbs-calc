@@ -227,4 +227,56 @@ export const Recipes = [
     new Recipe([new MaterialVolume(Materials.NAPHTA_S_SEV, 1000)], [new MaterialVolume(Materials.PROPENE, 300), new MaterialVolume(Materials.CARBON_T_P, 3)], 30, Machine.Distillery),
     new Recipe([new MaterialVolume(Materials.NAPHTA_S_SEV, 1000)], [new MaterialVolume(Materials.HEAVY_FUEL, 25), new MaterialVolume(Materials.CARBON_T_P, 3)], 30, Machine.Distillery),
 
+    // Wood pyrolize
+
+    new Recipe([new MaterialVolume(Materials.WOOD, 20), new MaterialVolume(Materials.STEAM, 1000)], [new MaterialVolume(Materials.COAL_GAS, 1440), new MaterialVolume(Materials.CHARCOAL, 24)], 30, Machine.PyrolizeOven),
+    new Recipe([new MaterialVolume(Materials.WOOD, 16)], [new MaterialVolume(Materials.WOOD_VINEGAR, 3000), new MaterialVolume(Materials.CHARCOAL, 20)], 64, Machine.PyrolizeOven),
+    new Recipe([new MaterialVolume(Materials.WOOD, 16)], [new MaterialVolume(Materials.WOOD_TAR, 1500), new MaterialVolume(Materials.CHARCOAL, 20)], 64, Machine.PyrolizeOven),
+    new Recipe([new MaterialVolume(Materials.WOOD, 16)], [new MaterialVolume(Materials.CREOSOTE_OIL, 4000), new MaterialVolume(Materials.CHARCOAL, 20)], 64, Machine.PyrolizeOven),
+    new Recipe([new MaterialVolume(Materials.WOOD, 16), new MaterialVolume(Materials.NITROGEN, 1000)], [new MaterialVolume(Materials.WOOD_TAR, 1500), new MaterialVolume(Materials.CHARCOAL, 20)], 96, Machine.PyrolizeOven),
+    new Recipe([new MaterialVolume(Materials.WOOD, 16), new MaterialVolume(Materials.NITROGEN, 1000)], [new MaterialVolume(Materials.CHARCOAL_BYPRODUCTS, 4000), new MaterialVolume(Materials.CHARCOAL, 20)], 96, Machine.PyrolizeOven),
+    new Recipe([new MaterialVolume(Materials.WOOD, 16), new MaterialVolume(Materials.NITROGEN, 1000)], [new MaterialVolume(Materials.WOOD_GAS, 1500), new MaterialVolume(Materials.CHARCOAL, 20)], 96, Machine.PyrolizeOven),
+    new Recipe([new MaterialVolume(Materials.WOOD, 16), new MaterialVolume(Materials.NITROGEN, 1000)], [new MaterialVolume(Materials.WOOD_VINEGAR, 3000), new MaterialVolume(Materials.CHARCOAL, 20)], 96, Machine.PyrolizeOven),
+    new Recipe([new MaterialVolume(Materials.WOOD, 16), new MaterialVolume(Materials.NITROGEN, 1000)], [new MaterialVolume(Materials.CREOSOTE_OIL, 4000), new MaterialVolume(Materials.CHARCOAL, 20)], 96, Machine.PyrolizeOven),
+    new Recipe([new MaterialVolume(Materials.WOOD, 16)], [new MaterialVolume(Materials.HEAVY_OIL, 200), new MaterialVolume(Materials.ASHES, 4)], 192, Machine.PyrolizeOven),
+
+    new Recipe([new MaterialVolume(Materials.WOOD_VINEGAR, 200)], [new MaterialVolume(Materials.ETHANOL, 2)], 64, Machine.Distillery),
+    new Recipe([new MaterialVolume(Materials.WOOD_VINEGAR, 200)], [new MaterialVolume(Materials.METHYL_ACETATE, 2)], 64, Machine.Distillery),
+    new Recipe([new MaterialVolume(Materials.WOOD_VINEGAR, 200)], [new MaterialVolume(Materials.ACETONE, 10)], 64, Machine.Distillery),
+    new Recipe([new MaterialVolume(Materials.WOOD_VINEGAR, 200)], [new MaterialVolume(Materials.METHANOL, 60)], 64, Machine.Distillery),
+    new Recipe([new MaterialVolume(Materials.WOOD_VINEGAR, 200)], [new MaterialVolume(Materials.ACETIC_ACID, 20)], 64, Machine.Distillery),
+    // + water
+
+    new Recipe([new MaterialVolume(Materials.WOOD_TAR, 200)], [new MaterialVolume(Materials.DIMETYLBENZENE, 40)], 64, Machine.Distillery),
+    new Recipe([new MaterialVolume(Materials.WOOD_TAR, 200)], [new MaterialVolume(Materials.TOLUENE, 15)], 64, Machine.Distillery),
+    new Recipe([new MaterialVolume(Materials.WOOD_TAR, 200)], [new MaterialVolume(Materials.PHENOL, 15)], 64, Machine.Distillery),
+    new Recipe([new MaterialVolume(Materials.WOOD_TAR, 200)], [new MaterialVolume(Materials.CREOSOTE_OIL, 60)], 64, Machine.Distillery),
+    new Recipe([new MaterialVolume(Materials.WOOD_TAR, 200)], [new MaterialVolume(Materials.BENZENE, 70)], 64, Machine.Distillery),
+
+    new Recipe([new MaterialVolume(Materials.WOOD_GAS, 200)], [new MaterialVolume(Materials.METHANE_GAS, 26)], 64, Machine.Distillery),
+    new Recipe([new MaterialVolume(Materials.WOOD_GAS, 200)], [new MaterialVolume(Materials.ETHYLENE, 4)], 64, Machine.Distillery),
+    new Recipe([new MaterialVolume(Materials.WOOD_GAS, 200)], [new MaterialVolume(Materials.CO2_GAS, 98)], 64, Machine.Distillery),
+    new Recipe([new MaterialVolume(Materials.WOOD_GAS, 200)], [new MaterialVolume(Materials.HYDROGEN, 4)], 64, Machine.Distillery),
+    new Recipe([new MaterialVolume(Materials.WOOD_GAS, 200)], [new MaterialVolume(Materials.CARBON_MONOXIDE, 68)], 64, Machine.Distillery),
+
+    new Recipe([new MaterialVolume(Materials.CREOSOTE_OIL, 25)], [new MaterialVolume(Materials.LUBRICANT, 8)], 30, Machine.Distillery),
+    new Recipe([new MaterialVolume(Materials.CREOSOTE_OIL, 750)], [new MaterialVolume(Materials.LUBRICANT, 750), new MaterialVolume(Materials.TALC, 1)], 4, Machine.Brewery),
+
+    new Recipe([new MaterialVolume(Materials.WOOD_TAR, 200)], [new MaterialVolume(Materials.DIMETYLBENZENE, 40)], 64, Machine.Distillery),
+    new Recipe([new MaterialVolume(Materials.WOOD_TAR, 200)], [new MaterialVolume(Materials.TOLUENE, 15)], 64, Machine.Distillery),
+    new Recipe([new MaterialVolume(Materials.WOOD_TAR, 200)], [new MaterialVolume(Materials.PHENOL, 15)], 64, Machine.Distillery),
+    new Recipe([new MaterialVolume(Materials.WOOD_TAR, 200)], [new MaterialVolume(Materials.CREOSOTE_OIL, 60)], 64, Machine.Distillery),
+    new Recipe([new MaterialVolume(Materials.WOOD_TAR, 200)], [new MaterialVolume(Materials.BENZENE, 70)], 64, Machine.Distillery),
+
+    new Recipe([new MaterialVolume(Materials.CHARCOAL_BYPRODUCTS, 1000)], [new MaterialVolume(Materials.WOOD_TAR, 250)], 64, Machine.Distillery),
+    new Recipe([new MaterialVolume(Materials.CHARCOAL_BYPRODUCTS, 1000)], [new MaterialVolume(Materials.DIMETYLBENZENE, 100)], 64, Machine.Distillery),
+    new Recipe([new MaterialVolume(Materials.CHARCOAL_BYPRODUCTS, 1000)], [new MaterialVolume(Materials.WOOD_GAS, 250)], 64, Machine.Distillery),
+    new Recipe([new MaterialVolume(Materials.CHARCOAL_BYPRODUCTS, 1000)], [new MaterialVolume(Materials.WOOD_VINEGAR, 400)], 64, Machine.Distillery),
+    new Recipe([new MaterialVolume(Materials.CHARCOAL_BYPRODUCTS, 40)], [new MaterialVolume(Materials.DIMETYLBENZENE, 4)], 120, Machine.Distillery),
+
+    new Recipe([new MaterialVolume(Materials.COAL, 12)], [new MaterialVolume(Materials.COAL_TAR, 2200)], 120, Machine.PyrolizeOven),
+    new Recipe([new MaterialVolume(Materials.COAL_COKE, 8)], [new MaterialVolume(Materials.COAL_TAR, 3400), new MaterialVolume(Materials.ASHES, 1)], 240, Machine.PyrolizeOven),
+    new Recipe([new MaterialVolume(Materials.COAL, 16), new MaterialVolume(Materials.STEAM, 1000)], [new MaterialVolume(Materials.COAL_COKE, 10), new MaterialVolume(Materials.COAL_GAS, 2880)], 120, Machine.PyrolizeOven),
+    new Recipe([new MaterialVolume(Materials.COAL, 16)], [new MaterialVolume(Materials.COAL_COKE, 16), new MaterialVolume(Materials.CREOSOTE_OIL, 8000)], 64, Machine.PyrolizeOven),
+
 ];

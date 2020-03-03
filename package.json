@@ -30,6 +30,7 @@
     "optimize-css-assets-webpack-plugin": "latest",
     "postcss-loader": "latest",
     "postcss-scss": "latest",
+    "prettier": "^1.19.1",
     "react": "latest",
     "react-dom": "latest",
     "react-router-dom": "latest",
@@ -47,5 +48,11 @@
   "main": "webpack.config.js",
   "dependencies": {},
   "keywords": [],
-  "author": "Relvl"
+  "author": "Relvl",
+  "prettier": {
+    "printWidth": 180,
+    "tabWidth": 4,
+    "trailingComma": "es5",
+    "bracketSpacing": false
+  }
 }

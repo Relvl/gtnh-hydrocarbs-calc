@@ -19,6 +19,10 @@ export class CComboboxValue<ID = string, ATT = any> {
     render() {
         return <div key={`${this.id}`}>{this.label.toString()}</div>;
     }
+
+    checkFilter(filter: string): boolean {
+        return this.id.toString().contains(filter, true) || this.label.toString().contains(filter, true);
+    }
 }
 
 type Props<ID = string, ATT = any> = {
@@ -85,7 +89,9 @@ export class CCombobox<ID = string, ATT = any> extends AComponent<Props<ID, ATT>
     }
 
     handleExpand = () => {
-        if (this.props.disabled) { return; }
+        if (this.props.disabled) {
+            return;
+        }
         if (this.state.expanded) {
             return;
         }
@@ -114,6 +120,7 @@ export class CCombobox<ID = string, ATT = any> extends AComponent<Props<ID, ATT>
         if (this.state.expanded) {
             return (
                 <input
+                    autoFocus
                     id={this.comboboxId}
                     type="text"
                     value={this.state.filterValue}
@@ -149,12 +156,12 @@ export class CCombobox<ID = string, ATT = any> extends AComponent<Props<ID, ATT>
 
                 {this.renderSelectedValue(selectedValue)}
 
-                <CIcon icon="icon-play3" size="large" className="open-dd-button" onClick={this.handleDropDownButton}/>
+                <CIcon icon="icon-play3" size="large" className="open-dd-button" onClick={this.handleDropDownButton} />
 
                 <div className={"combobox-drop-down"}>
                     <div className="overflow-wrapper">
                         {this.props.values
-                            .filter(value => true)
+                            .filter(value => !this.state.filterValue || value.checkFilter(this.state.filterValue))
                             .map((value, idx) => (
                                 <div
                                     className={window.className("dd-item", {

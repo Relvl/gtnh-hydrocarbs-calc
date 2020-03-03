@@ -647,3 +647,9 @@ pre {
         content: ", ";
     }
 }
+
+.border-bottom-line:not(:last-child) {
+    border-bottom: 1px solid $control_color_grey;
+    margin-bottom: $size_s;
+    padding-bottom: $size_s;
+}
