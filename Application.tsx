@@ -43,7 +43,7 @@ export class Application extends AComponent<{}, State> {
     render() {
         return (
             <div className="page-wrapper">
-                <Calculator />
+                <Calculator/>
                 <div className="text-grey-smallest margin-top-m">
                     This site uses{" "}
                     <a href="https://en.wikipedia.org/wiki/HTTP_cookie" target="_blank">
@@ -54,6 +54,13 @@ export class Application extends AComponent<{}, State> {
                         local storage
                     </a>{" "}
                     files. Don't press "Start" if you dont accept these files.
+                </div>
+                <div className="text-grey-smallest margin-top-s">
+                    GitHub repo:{" "}
+                    <a href="https://github.com/Relvl/gtnh-hydrocarbs-calc" target="_blank">
+                        https://github.com/Relvl/gtnh-hydrocarbs-calc
+                    </a>
+                    . Feel free to open issues and pull requests.
                 </div>
             </div>
         );
@@ -80,7 +87,7 @@ export function uniqueArray<T = any>(array: ReadonlyArray<T>, uniq: (element: T)
                 memo[uniq(element)] = element;
             }
             return memo;
-        }, {})
+        }, {}),
     );
 }
 
