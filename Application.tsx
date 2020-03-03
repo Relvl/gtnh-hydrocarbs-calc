@@ -53,7 +53,7 @@ export class Application extends AComponent<{}, State> {
                     <a href="https://en.wikipedia.org/wiki/Web_storage#Local_and_session_storage" target="_blank">
                         local storage
                     </a>{" "}
-                    files. Do not press "Start" if you dont accept these files.
+                    files. Don't press "Start" if you dont accept these files.
                 </div>
             </div>
         );
