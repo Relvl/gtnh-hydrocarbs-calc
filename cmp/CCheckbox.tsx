@@ -3,7 +3,6 @@ import IComponentProps from "../core/IComponentProps";
 import IComponentState from "../core/IComponentState";
 import * as React from "react";
 import {HTMLAttributes} from "react";
-import {CIcon} from "./CIcon";
 
 type Props = {
     label: React.ReactNode;
@@ -40,7 +39,7 @@ export class CCheckbox extends AComponent<Props & IComponentProps, State> {
             <div className={window.className("c-checkbox", className, {disabled})} {...wrapperProps} data-selection-prevent="">
                 <div className={window.className("facade", {checked, "right-margin": !!label})}>
                     <div className="animation-element" ref={ref => (this.animationRef = ref)} />
-                    {checked ? <CIcon icon="icon-check-old" className="ui-ico-check" /> : null}
+                    {checked ? <div className="check-mark" /> : null}
                 </div>
 
                 <input id={this.comboboxId} type="checkbox" checked={this.props.checked} onChange={this.handleInputChanged} tabIndex={this.props.tabIndex} />

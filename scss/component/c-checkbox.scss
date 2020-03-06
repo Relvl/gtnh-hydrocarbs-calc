@@ -46,6 +46,12 @@
         &.checked {
             //background-color: $control_color_orange;
             //border-color: $control_color_orange;
+
+            .check-mark{
+                width: 60%;
+                height: 60%;
+                background: #70f;
+            }
         }
 
         svg.ui-ico-check {
