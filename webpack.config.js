@@ -94,7 +94,7 @@ module.exports = (env, argv) => {
 					cleanOnceBeforeBuildPatterns: [],
 				}),
 				new HtmlWebpackPlugin({
-					title: "Цифровой маркетинг",
+					title: "GTNH Hydrocarbs Calculator",
 					template: "./index.html",
 					favicon: "./favicon.ico",
 				}),
