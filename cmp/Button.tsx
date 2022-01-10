@@ -16,7 +16,7 @@ export type CButtonProps = {
 };
 type State = {};
 
-export default class CButton extends AComponent<CButtonProps & ButtonHTMLAttributes<HTMLButtonElement>, State> {
+export default class Button extends AComponent<CButtonProps & ButtonHTMLAttributes<HTMLButtonElement>, State> {
     static defaultProps = {
         buttonStyle: CButtonStyle.NORMAL,
     };
@@ -38,10 +38,10 @@ export default class CButton extends AComponent<CButtonProps & ButtonHTMLAttribu
                 y = event.nativeEvent.offsetY;
             setTimeout(() => {
                 if (this.isComponentMounted) {
-                    this.rippleElement!.setAttribute("style", `top: ${y - CButton.rippleSize / 2}px; left:${x - CButton.rippleSize / 2}px;`);
+                    this.rippleElement!.setAttribute("style", `top: ${y - Button.rippleSize / 2}px; left:${x - Button.rippleSize / 2}px;`);
                     this.rippleElement!.classList.add("animate");
                 }
-            }, CButton.rippleAnumationTime);
+            }, Button.rippleAnumationTime);
 
             onClick && onClick(event);
         };

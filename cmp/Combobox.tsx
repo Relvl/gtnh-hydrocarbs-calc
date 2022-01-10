@@ -3,7 +3,7 @@ import IComponentProps from "../core/IComponentProps";
 import IComponentState from "../core/IComponentState";
 import * as React from "react";
 import {HTMLAttributes} from "react";
-import {CIcon} from "./CIcon";
+import {Icon} from "./Icon";
 
 export class CComboboxValue<ID = string, ATT = any> {
     id: ID;
@@ -44,7 +44,7 @@ type State<ID, ATT> = {
     subselectItemIndex: number;
 } & IComponentState;
 
-export class CCombobox<ID = string, ATT = any> extends AComponent<Props<ID, ATT> & HTMLAttributes<HTMLDivElement> & IComponentProps, State<ID, ATT>> {
+export class Combobox<ID = string, ATT = any> extends AComponent<Props<ID, ATT> & HTMLAttributes<HTMLDivElement> & IComponentProps, State<ID, ATT>> {
     private readonly comboboxId: string;
 
     constructor(props: Props<ID, ATT> & HTMLAttributes<HTMLDivElement> & IComponentProps) {
@@ -156,7 +156,7 @@ export class CCombobox<ID = string, ATT = any> extends AComponent<Props<ID, ATT>
 
                 {this.renderSelectedValue(selectedValue)}
 
-                <CIcon icon="icon-play3" size="large" className="open-dd-button" onClick={this.handleDropDownButton} />
+                <Icon icon="icon-play3" size="large" className="open-dd-button" onClick={this.handleDropDownButton} />
 
                 <div className={"combobox-drop-down"}>
                     <div className="overflow-wrapper">

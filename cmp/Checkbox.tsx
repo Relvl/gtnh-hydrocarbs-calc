@@ -14,7 +14,7 @@ type State = {
     id: string;
 } & IComponentState;
 
-export class CCheckbox extends AComponent<Props & IComponentProps, State> {
+export class Checkbox extends AComponent<Props & IComponentProps, State> {
     private readonly comboboxId: string;
 
     constructor(props: Props & IComponentProps) {

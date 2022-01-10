@@ -15,7 +15,7 @@
       "es6",
       "es2019"
     ],
-    "sourceMap": true
+    "sourceMap": true,
   },
   "include": [
     "./**/*.tsx",
@@ -24,5 +24,11 @@
   "exclude": [
     "node_modules",
     "**/*.spec.ts"
-  ]
+  ],
+  "awesomeTypescriptLoaderOptions": {
+    "useWebpackText": true,
+    "useTranspileModule": true,
+    "doTypeCheck": true,
+    "forkChecker": true
+  }
 }

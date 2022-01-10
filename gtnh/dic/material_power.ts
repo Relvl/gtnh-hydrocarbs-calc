@@ -64,4 +64,5 @@ export const MaterialPower = {
     ["SULFURIC_COAL_TAR_OIL"]: {generator: EGenerator.SemifluidGenerator, power: 64000},
     [Materials.SULFURIC_HEAVY_FUEL.id]: {generator: EGenerator.SemifluidGenerator, power: 80000},
     [Materials.HEAVY_FUEL.id]: {generator: EGenerator.SemifluidGenerator, power: 360000},
+    [Materials.LIGHT_FUEL.id]: {generator: EGenerator.DieselGenerator, power: 305000},
 };

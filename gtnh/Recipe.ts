@@ -7,12 +7,14 @@ export class Recipe {
     readonly targets: Array<MaterialVolume>;
     readonly power: number;
     readonly process: Machine;
+    readonly complexityBypass: boolean;
 
-    constructor(s: Array<MaterialVolume>, t: Array<MaterialVolume>, power: number, process: Machine) {
+    constructor(s: Array<MaterialVolume>, t: Array<MaterialVolume>, power: number, process: Machine, complexityBypass = false) {
         this.sources = s;
         this.targets = t;
         this.power = power;
         this.process = process;
+        this.complexityBypass = complexityBypass;
     }
 
     hasResult(target: Material) {

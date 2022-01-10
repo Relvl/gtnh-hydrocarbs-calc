@@ -61,7 +61,7 @@ module.exports = (env, argv) => {
 			},
 
 			devServer: {
-				host: "localhost",
+				host: "lk-local.rt.ru",
 				port: 8443,
 				https: true,
 				hot: false,
