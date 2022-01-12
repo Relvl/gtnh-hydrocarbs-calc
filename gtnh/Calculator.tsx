@@ -71,7 +71,7 @@ export class Calculator extends AComponent<{}, State> {
                         <div className="flex-row">
                             <Combobox<keyof typeof Materials>
                                 label="Source"
-                                values={polymers}
+                                values={polymers.filter(p => p.attach.tier == 1)}
                                 selected={this.state.selectedSource}
                                 onSelected={selectedSource => this.setState({selectedSource})}
                                 disabled={this.state.useOnlyTarget}

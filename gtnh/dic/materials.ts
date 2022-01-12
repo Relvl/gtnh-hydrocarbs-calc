@@ -63,6 +63,8 @@ export const Materials = {
     ETHYLENE: new Material("ETHYLENE", "Ethylene", 6),
     OCTANE: new Material("OCTANE", "Octane", 6),
 
+    // todo cracked t6 materials!
+
     COAL_GAS: new Material("COAL_GAS", "Coal Gas", 2),
     COAL_TAR: new Material("COAL_TAR", "Coal Tar", 2),
     WOOD_VINEGAR: new Material("WOOD_VINEGAR", "Wood vinegar", 2),
